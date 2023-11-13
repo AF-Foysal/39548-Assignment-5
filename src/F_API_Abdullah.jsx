@@ -1,29 +1,38 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 export default function FetchAbdullah() {
-	const [word, setWord] = useState();
+	const [wordDef, setWordDef] = useState();
+	const [word, setWord] = useState("mechanic");
+	const endpoint = "https://api.dictionaryapi.dev/api/v2/entries/en/";
 
-	useEffect(() => {
-		fetch("https://api.dictionaryapi.dev/api/v2/entries/en/mechanic")
+	function handleWordChange(e) {
+		setWord(e.target.value);
+	}
+
+	async function getWord() {
+		fetch(endpoint + word)
 			.then((response) => response.json())
 			.then((data) => {
-				setWord(data[0].meanings);
+				setWordDef(data[0].meanings);
 				console.log(data[0].meanings);
-			});
-	}, []);
+			})
+			.catch((error) => console.error(error));
+	}
 
 	return (
 		<>
-			<h1> Here is definition for word: Mechanic </h1>
-			{word
-				? word.map((meaning) => {
+			<input onChange={handleWordChange} value={word} />
+			<button onClick={getWord}>Get Definition</button>
+			<h1> Here is definition for word: {word} </h1>
+			{wordDef
+				? wordDef.map((meaning) => {
 						return (
-							<p key={word}>
+							<p key={meaning.definition}>
 								{meaning.partOfSpeech} :{" "}
 								{meaning.definitions[0].definition}
 							</p>
 						);
-				})
+				  })
 				: null}
 		</>
 	);
