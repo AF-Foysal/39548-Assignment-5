@@ -25,3 +25,4 @@ For code found in "thanemulAPI.jsx":
 
 
 
+<img width="1267" alt="image" src="https://github.com/AF-Foysal/39548-Assignment-5/assets/72881276/50d31308-c7e8-4dba-a968-11714ea3978e">
