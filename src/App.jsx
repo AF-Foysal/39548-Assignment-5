@@ -5,6 +5,7 @@ import FetchAbdullah from "./apis/F_API_Abdullah";
 import JoshAPI from "./apis/joshAPI";
 import AzmainAPI from "./apis/azmainAPI";
 import FetchThanemul from "./apis/thanemulAPI";
+import Pokemon from "./apis/pokemonApiCaden";
 
 function App() {
 	return (
@@ -22,15 +23,19 @@ function App() {
 				<ul>
 					<Link to='/azmain'>Azmain's API</Link>
 				</ul>
-        <ul>
+        		<ul>
 					<Link to='/thanemul'>Thanemul's API</Link>
+				</ul>
+				<ul>
+					<Link to='/caden'>Caden's API</Link>
 				</ul>
 			</nav>
 			<Routes>
 				<Route path='/abdullah' element={<FetchAbdullah />} />
 				<Route path='/josh' element={<JoshAPI />} />
 				<Route path='/azmain' element={<AzmainAPI />} />
-        <Route path='/thanemul' element={<FetchThanemul />} />
+        		<Route path='/thanemul' element={<FetchThanemul />} />
+				<Route path='/caden' element={<Pokemon />} />
 			</Routes>
 		</>
 	);
