@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import FetchAbdullah from "./apis/F_API_Abdullah";
 import JoshAPI from "./apis/joshAPI";
+import FetchThanemul from "./apis/thanemulAPI";
 
 function App() {
   return (
@@ -17,10 +18,14 @@ function App() {
         <ul>
           <Link to="/josh">Josh's API</Link>
         </ul>
+        <ul>
+          <Link to="/thanemul">Thanemul's API</Link>
+        </ul>
       </nav>
       <Routes>
         <Route path="/abdullah" element={<FetchAbdullah />} />
         <Route path="/josh" element={<JoshAPI />} />
+        <Route path="/thanemul" element={<FetchThanemul />} />
       </Routes>
     </>
   );
