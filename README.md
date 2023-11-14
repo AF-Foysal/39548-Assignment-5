@@ -23,7 +23,8 @@ For code found in "thanemulAPI.jsx":
 **API Name:** [PokeAPI](https://pokeapi.co/)
 
 **Screenshot of a successful API test in Postman:**
-![PokemonImage](https://github.com/AF-Foysal/39548-Assignment-5/src/assets/pokemonApi.png)
+![image](https://github.com/AF-Foysal/39548-Assignment-5/assets/72881276/0ab8aaf4-ba71-47ad-82b3-e6b2a5f23837)
+
 
 **API Documentation:** [PokeAPI Documentation](https://pokeapi.co/docs/v2)
 
