@@ -1,11 +1,4 @@
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+#39548-Assignment-5
 
 For code found in "joshAPI.jsx":
 - API PROVIDER: CoinDesk from https://apipheny.io/free-api/
@@ -24,5 +17,10 @@ For code found in "thanemulAPI.jsx":
 - API USAGE ON APPLICATION: Used for retreiving a random Jeopardy question that after user is done answering can click a button and view answer
 
 
-
+For code found in "F_API_Abdullah.jsx":
+- API PROVIDER: Free Dictionary API from Google Search
+- WRITEUP CREDITED TO: Abdullah Foysal
+- API NAME: Free Dictionary API
+- API DOCUMENTATION: https://dictionaryapi.dev/
+- API USAGE ON APPLICATION: Used for retreiving a definition for an inputed word
 <img width="1267" alt="image" src="https://github.com/AF-Foysal/39548-Assignment-5/assets/72881276/50d31308-c7e8-4dba-a968-11714ea3978e">
