@@ -1,29 +1,43 @@
-import React, { useState } from "react";
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  setQuestion,
+  setAnswer,
+  setShowAnswer,
+  setError,
+} from '../jeapordySlice';
 
-export default function FetchThanemul() {
-  const [question, setQuestion] = useState("");
-  const [answer, setAnswer] = useState("");
-  const [showAnswer, setShowAnswer] = useState(false);
+const FetchThanemul = () => {
+  const dispatch = useDispatch();
+  const { question, answer, showAnswer, error } = useSelector(
+    (state) => state.jeapordy
+  );
 
-  const endpoint = "https://jservice.io/api/random";
+  const endpoint = 'https://jservice.io/api/random';
 
-  async function getQuestion() {
+  const getQuestion = async () => {
     try {
       const response = await fetch(endpoint);
       const data = await response.json();
       const { question, answer } = data[0];
 
-      setQuestion(question);
-      setAnswer(answer);
-      setShowAnswer(false);
+      dispatch(setQuestion(question));
+      dispatch(setAnswer(answer));
+      dispatch(setShowAnswer(false));
+      dispatch(setError(null));
     } catch (error) {
-      console.error("Error fetching question:", error);
+      console.error('Error fetching question:', error);
+      dispatch(setError('Error fetching question'));
     }
-  }
+  };
 
-  function handleShowAnswer() {
-    setShowAnswer(true);
-  }
+  useEffect(() => {
+    getQuestion();
+  }, []); // Removed dispatch from the dependency array to prevent unnecessary re-renders
+
+  const handleShowAnswer = () => {
+    dispatch(setShowAnswer(true));
+  };
 
   return (
     <>
@@ -48,4 +62,7 @@ export default function FetchThanemul() {
       </div>
     </>
   );
-}
+};
+
+export default FetchThanemul;
+
