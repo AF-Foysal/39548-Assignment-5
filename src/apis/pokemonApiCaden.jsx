@@ -1,28 +1,19 @@
 import { useState, useEffect, useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchPokemonData } from "../pokemonSlice";
 
 export default function Pokemon() {
-  const [pokemonData, setPokemonData] = useState(null);
+  const dispatch = useDispatch();
+  const pokemonData = useSelector((state) => state.pokemon.data);
   const [pokemonName, setPokemonName] = useState('');
 
-  const endpoint = `https://pokeapi.co/api/v2/pokemon/${pokemonName.toLowerCase()}`;
-
-  const fetchPokemon = useCallback(async () => { // error just in case testing and api call fails 
-    try {
-      const response = await fetch(endpoint);
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-
-      const data = await response.json();
-      setPokemonData(data);
-    } catch (error) {
-      console.error('Error fetching Pokémon data:', error.message);
-    }
-  }, [endpoint]);
+  const handleFetchPokemon = useCallback(() => {
+    dispatch(fetchPokemonData(pokemonName.toLowerCase()));
+  }, [dispatch, pokemonName]);
 
   useEffect(() => {
-    fetchPokemon();
-  }, [pokemonName, fetchPokemon]);
+    handleFetchPokemon();
+  }, [handleFetchPokemon]);
 
   console.log('Pokemon Data:', pokemonData);
 
@@ -34,7 +25,7 @@ export default function Pokemon() {
         onChange={(e) => setPokemonName(e.target.value)}
         placeholder="Enter Pokémon name"
       />
-      <button onClick={fetchPokemon}>Fetch Pokémon</button>
+      <button onClick={handleFetchPokemon}>Fetch Pokémon</button>
 
       {pokemonData && (
         <div>
@@ -58,7 +49,7 @@ export default function Pokemon() {
               <p>No abilities found for this Pokémon.</p>
             )
           ) : (
-            <p>Pokémon not found. Enter valid Pokemon name to start and output abilities and sprite ex. Pikachu</p>
+            <p>Pokémon not found. Enter a valid Pokemon name to start and output abilities and sprite (e.g., Pikachu)</p>
           )}
         </div>
       )}
