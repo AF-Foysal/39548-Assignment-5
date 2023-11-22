@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import cashReducer from "./cashSlice";
-import pokemonReducer from './pokemonSlice';
+import pokemonReducer from "./pokemonSlice";
+import word_Reducer from "./wordSlice";
 
 export const store = configureStore({
-  reducer: {
-    cash: cashReducer,
-    pokemon: pokemonReducer,
-  },
+	reducer: {
+		cash: cashReducer,
+		pokemon: pokemonReducer,
+		word_: word_Reducer,
+	},
 });
